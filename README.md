@@ -62,7 +62,7 @@ graph TB
         React --> Reclaim
     end
 
-    subgraph "Mantle Network (L2)"
+    subgraph "QDay Aevum Testnet (chain 44005)"
         subgraph "Invoice System"
             InvoiceRegistry[📋 InvoiceRegistry<br/>State Management]
             InvoiceNFT[🎨 InvoiceNFT<br/>ERC721 NFT]
@@ -91,7 +91,7 @@ graph TB
             SettlementRouter -->|Repays| Vault
         end
         
-        DemoUSDC[💵 DemoUSDC<br/>ERC20 Stablecoin]
+        DemoUSDC[💵 sUSD<br/>SETTL USD, 6 decimals]
     end
 
     Seller -->|Creates Invoice| React
