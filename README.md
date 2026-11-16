@@ -142,6 +142,7 @@ sequenceDiagram
     participant Vault
     participant Buyer
     participant SettlementRouter
+    participant Treasury
     participant Reputation
 
     Note over Seller,Reputation: 1. CREATE INVOICE
@@ -155,14 +156,14 @@ sequenceDiagram
     AdvanceEngine->>InvoiceRegistry: getInvoice(invoiceId)
     AdvanceEngine->>InvoiceNFT: Verify ownership
     AdvanceEngine->>Vault: borrow(advanceAmount)
-    Vault-->>AdvanceEngine: USDC
+    Vault-->>AdvanceEngine: sUSD
     AdvanceEngine->>InvoiceRegistry: markFinanced(invoiceId)
-    AdvanceEngine-->>Seller: USDC (70-80% LTV)
+    AdvanceEngine-->>Seller: sUSD (35-90% LTV by tier)
     InvoiceRegistry-->>Seller: Status: Financed
 
     Note over Seller,Reputation: 3. PAY INVOICE
     Buyer->>SettlementRouter: payInvoice(invoiceId)
-    SettlementRouter->>Buyer: Transfer USDC
+    Buyer->>SettlementRouter: Transfer sUSD
     SettlementRouter->>InvoiceRegistry: updateStatus(Paid)
     
     Note over SettlementRouter: Settlement Waterfall (Atomic)
@@ -173,7 +174,7 @@ sequenceDiagram
         AdvanceEngine-->>SettlementRouter: repayment + interest
         SettlementRouter->>Vault: repay(amount)
     end
-    SettlementRouter->>Seller: Remainder USDC
+    SettlementRouter->>Seller: Remainder sUSD
     SettlementRouter->>InvoiceRegistry: updateStatus(Cleared)
     SettlementRouter->>Reputation: updateReputation(seller, amount)
     
