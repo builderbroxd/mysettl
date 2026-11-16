@@ -343,51 +343,18 @@ Then fill in your environment variables. See `.env.example` for all required var
 
 ### Deploy All Contracts
 
-Deploy all smart contracts to Mantle Sepolia testnet:
-
 ```bash
-# Compile contracts first (optional, deploy script will compile)
-npm run compile
-
-# Deploy all contracts
-npm run deploy
+npm run deploy:aevum
 ```
 
-**What gets deployed:**
-1. **DemoUSDC** - Demo USDC token for testing
-2. **InvoiceNFT** - ERC721 NFT contract for tokenized invoices
-3. **InvoiceRegistry** - Invoice creation and state management
-4. **Vault** - Liquidity pool for invoice financing
-5. **AdvanceEngine** - Instant financing engine
-6. **Reputation** - On-chain credit scoring system
-7. **SettlementRouter** - Automated payment settlement
-8. **USMTPlus** - Receipt token for vault deposits
-9. **Staking** - Staking contract for sUSMT+ tokens
+`scripts/deploy-aevum.cjs` refuses to run on any chain other than Aevum (44005) or a local Hardhat node, then:
 
-**Deployment Output:**
+1. Deploys **sUSD** (SETTL USD), the mintable 6-decimal demo stablecoin. Set `STABLECOIN_ADDRESS` to settle in an existing 6-decimal token such as tUSD8 instead.
+2. Deploys **InvoiceNFT**, **InvoiceRegistry**, **USMTPlus**, **Vault**, **Staking**, **AdvanceEngine**, **Reputation** and **SettlementRouter** (0.5% protocol fee).
+3. Wires the roles between them (minters, settlement router, advance engine, vault borrower).
+4. Prints the `VITE_*_ADDRESS` lines to paste into `.env`.
 
-The script will:
-- Deploy all contracts in the correct order
-- Configure roles and permissions between contracts
-- Save contract addresses to `contracts.json`
-- Display environment variables to add to `.env`
-
-**Example Output:**
-
-```
-✅ Deployment complete!
-
-Contract addresses saved to: contracts.json
-
-VITE_INVOICE_NFT_ADDRESS=0x...
-VITE_INVOICE_REGISTRY_ADDRESS=0x...
-VITE_VAULT_ADDRESS=0x...
-VITE_ADVANCE_ENGINE_ADDRESS=0x...
-VITE_REPUTATION_ADDRESS=0x...
-VITE_SETTLEMENT_ROUTER_ADDRESS=0x...
-```
-
-Copy these addresses to your `.env` file.
+Every confirmed step is written to `deployments/44005.json`, so an interrupted run can be resumed by running it again. To start a completely fresh deployment, move that file aside first.
 
 ### Verify Contracts (Optional)
 
