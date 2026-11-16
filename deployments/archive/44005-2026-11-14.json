@@ -1,0 +1,38 @@
+{
+  "chainId": "44005",
+  "deployer": "0x37B977869F08b039F4Cf87d162be97eE36EcFcb8",
+  "contracts": {
+    "DemoUSDC": "0xa87732e041a133866b94c0D49aF0889d46f18ca7",
+    "Stablecoin": "0xa87732e041a133866b94c0D49aF0889d46f18ca7",
+    "InvoiceNFT": "0x64b10ef31d9b26B9c192b940b0ebE77809c9AF71",
+    "InvoiceRegistry": "0xdb57a4EB22dd35473827A740F8fb72323470A41f",
+    "USMTPlus": "0x146eb834A1f8f6547678E27b3A7287Df2dBb28D4",
+    "Vault": "0xfE3F34CA2698ae7577AAB323f38C6bB6172A1566",
+    "Staking": "0xdfF645C3F1C495CfA009115C1F4fB90f0F3b72Ea",
+    "AdvanceEngine": "0x47e4dfc7c73e21238000DDFA17eb83aA86576c5a",
+    "Reputation": "0x9225A651bd63D2F99D17DAb98F2A0499242543DB",
+    "SettlementRouter": "0xCdD9894A10b7fBe651a540eFd2e5852C02Cbaa25"
+  },
+  "txs": {
+    "DemoUSDC": "0xfa20d82e5d7d8b180d212522fb7dc8275f44f89c1e9e273c006b5112ee72485c",
+    "InvoiceNFT": "0xba848dd58951fe1d1f4eae8b5080de42469458f7e9b6de4f7577a72f6b68aa0b",
+    "InvoiceRegistry": "0x9bbd6b285e5c5c7d5d0639055573359cf00fc38f6c5e66233bf2f50e924b8493",
+    "USMTPlus": "0xf2885d2b53cf54adc0fe3ba9f0545b37cecb5d48e571ee1edc2368e989a71f83",
+    "Vault": "0x021ac09c9020fe90d483f0c44c1a02eab64fdb094fedf70d19ce2e5467913fc2",
+    "Staking": "0x1be159696c48241124830f50de63a5967bdbd62f4a6faf4f06cb9b7954098913",
+    "AdvanceEngine": "0x937bb1d1d6a2116c0f71cfda770b85f4409b9765776fd6047ce26265ed90ead5",
+    "Reputation": "0x8040c018e3a343cfdc00e4d799a258b71b08b0e095e2d0b2270d88d908d6ea25",
+    "SettlementRouter": "0xfbe6fba0821bd15aacee5d91c3fa63d02842cc6514b67998b220faa540e9e6bc"
+  },
+  "roles": {
+    "InvoiceNFT.setInvoiceRegistry": "0x4bf909cfa8911e3cd0c3be02720f1332d7906f0f5c9c29de2fbfcd3f419f1f44",
+    "InvoiceNFT.MINTER -> InvoiceRegistry": "0xf6f47d38e0fc91b0f4a8d40c9bd78689167b3bc8e679767886f5a4aad40b2911",
+    "USMTPlus.MINTER -> Vault": "0xd482fc419f314769ba0b54ce6ad59d315ef7b790031bc29a9af8af2d480784e1",
+    "InvoiceRegistry.SETTLEMENT_ROUTER -> SettlementRouter": "0xb38ec346f4a444b3c0a7662cd42302ffa9ff22c37fa5fa68b1a81d1bf7167e4d",
+    "InvoiceRegistry.ADVANCE_ENGINE -> AdvanceEngine": "0x534475931b24d7a44339b0e582e0f7e35cd3a9af57bf4d97711882fa7913b957",
+    "Reputation.SETTLEMENT_ROUTER -> SettlementRouter": "0xf2f76ce85b1a75a02104523dd823602c06c5a4bf274a62ea77abc7deed68e52a",
+    "Vault.BORROWER -> AdvanceEngine": "0xeba95e8818f5addfbb5be9f26f8fd441542d252106d5f8be216a46dd734b6a6d",
+    "AdvanceEngine.SETTLEMENT_ROUTER -> SettlementRouter": "0x31ba53a35e32a05c568215ef59263ce4c54091eb1aeed62bc198667ef0c921e3"
+  },
+  "deployedAt": "2026-11-13T20:48:25.458Z"
+}

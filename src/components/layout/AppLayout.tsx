@@ -1,0 +1,22 @@
+import { Outlet } from "react-router-dom"
+import { Sidebar } from "./Sidebar"
+import { Topbar } from "./Topbar"
+import { useState } from "react"
+
+export function AppLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Sidebar open={sidebarOpen} onOpenChange={setSidebarOpen} />
+      <div className="md:pl-[268px] transition-all duration-300">
+        <Topbar onMenuClick={() => setSidebarOpen(true)} />
+        <main className="min-h-[calc(100vh-5rem)] p-4 md:px-8 md:pt-4 pb-10 md:pb-12">
+          <div className="mx-auto max-w-6xl">
+            <Outlet />
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
