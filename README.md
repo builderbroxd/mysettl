@@ -316,28 +316,26 @@ cp .env.example .env
 
 Then fill in your environment variables. See `.env.example` for all required variables.
 
-**Required Environment Variables:**
+**Environment variables:**
 
-- `VITE_PRIVY_APP_ID` - Get from [Privy Dashboard](https://dashboard.privy.io/)
-- `VITE_MANTLE_CHAIN_ID` - Set to `5003` for Mantle Sepolia
-- `DEPLOYER_PRIVATE_KEY` - Your wallet private key for deploying contracts
-- `VITE_RECLAIM_APP_ID` - (Optional) For zkTLS proofs via Reclaim Protocol
+- `VITE_PRIVY_APP_ID`: from the [Privy Dashboard](https://dashboard.privy.io/)
+- `AEVUM_RPC_URL`: optional, defaults to `https://rpc-test.qday.info`
+- `DEPLOYER_PRIVATE_KEY`: testnet-only key, needed only to deploy contracts
+- `VITE_*_ADDRESS`: contract addresses. `.env.example` already holds the live Aevum deployment, so the app works without deploying anything.
+- `VITE_RECLAIM_APP_ID` / `VITE_RECLAIM_APP_SECRET`: optional, for zkTLS proofs via Reclaim Protocol
 
-Contract addresses will be populated after deployment.
+**Important:** Never commit your `.env` file. It is already in `.gitignore`.
 
-**Important:** Never commit your `.env` file to version control. It's already included in `.gitignore`.
+### Step 4: Connect to QDay Aevum Testnet
 
-### Step 4: Get Testnet ETH
-
-To deploy contracts and interact with the protocol, you need Mantle Sepolia testnet ETH:
-
-1. Get testnet ETH from [Mantle Faucet](https://faucet.sepolia.mantle.xyz/)
-2. Add Mantle Sepolia network to your wallet:
-   - **Network Name:** Mantle Sepolia
-   - **RPC URL:** https://rpc.sepolia.mantle.xyz
-   - **Chain ID:** 5003
-   - **Currency Symbol:** ETH
-   - **Block Explorer:** https://explorer.testnet.mantle.xyz
+1. Add the network to your wallet:
+   - **Network Name:** QDay Aevum Testnet
+   - **RPC URL:** https://rpc-test.qday.info
+   - **Chain ID:** 44005
+   - **Currency Symbol:** tQDAY
+   - **Block Explorer:** https://explorer-test.qday.info
+2. Get tQDAY for gas from the [QDay faucet](https://faucet.qday.info/en).
+3. Mint test sUSD in the app under **Settings**. sUSD can only be minted on test chains.
 
 ---
 
