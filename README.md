@@ -18,6 +18,24 @@ Built for the [Aevum Builder Challenge #1](https://dorahacks.io/hackathon/2442),
 
 For a detailed introduction, see [INTRO.md](./INTRO.md).
 
+## 🚀 Live on Aevum testnet
+
+Deployed on 16 Nov 2026 to QDay Aevum Testnet (chain ID `44005`). Full record, including deploy and role-wiring transactions: [`deployments/44005.json`](./deployments/44005.json).
+
+| Contract | Address |
+|---|---|
+| sUSD (SETTL USD, settlement token) | [`0x45D371fC414ab30bc6B88AB9B31A8c7d87691B68`](https://explorer-test.qday.info/address/0x45D371fC414ab30bc6B88AB9B31A8c7d87691B68) |
+| InvoiceNFT | [`0x4E27DBAA6eD92eB9303E9e108d6894263400580F`](https://explorer-test.qday.info/address/0x4E27DBAA6eD92eB9303E9e108d6894263400580F) |
+| InvoiceRegistry | [`0x035eEBb0892bd4132daF097ad072A04790699b72`](https://explorer-test.qday.info/address/0x035eEBb0892bd4132daF097ad072A04790699b72) |
+| USMTPlus | [`0xd6301d6d7D4692568463D92d09Ae93C0511B85BB`](https://explorer-test.qday.info/address/0xd6301d6d7D4692568463D92d09Ae93C0511B85BB) |
+| Vault | [`0xC3fc88D2bC63A258c8E33bc6F8BdE67768f47A90`](https://explorer-test.qday.info/address/0xC3fc88D2bC63A258c8E33bc6F8BdE67768f47A90) |
+| Staking | [`0x66291730F13b5C767C6f2Bf5F8929115dF74EB50`](https://explorer-test.qday.info/address/0x66291730F13b5C767C6f2Bf5F8929115dF74EB50) |
+| AdvanceEngine | [`0xf72e2816022DE208E2E9db091ae8cA9e325dCd82`](https://explorer-test.qday.info/address/0xf72e2816022DE208E2E9db091ae8cA9e325dCd82) |
+| Reputation | [`0x68c0AE260CF6ECC8586D348074Eb974162EDE5D2`](https://explorer-test.qday.info/address/0x68c0AE260CF6ECC8586D348074Eb974162EDE5D2) |
+| SettlementRouter | [`0x8b2f960D7092933a8366f4c9496853B9491a7ee6`](https://explorer-test.qday.info/address/0x8b2f960D7092933a8366f4c9496853B9491a7ee6) |
+
+Protocol fee: 0.5% (50 bps), sent to the treasury on every settlement.
+
 ---
 
 ## 🏗️ Architecture
