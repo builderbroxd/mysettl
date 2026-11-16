@@ -358,31 +358,24 @@ Every confirmed step is written to `deployments/44005.json`, so an interrupted r
 
 ### Verify Contracts (Optional)
 
-After deployment, verify contracts on Mantle Explorer:
+The Aevum explorer is Blockscout, which needs no API key. Verify a contract with its constructor arguments:
 
 ```bash
-# Set your Mantle Etherscan API key in .env
-MANTLE_ETHERSCAN_API_KEY=your_api_key
+npx hardhat verify --network aevumTestnet <address> <constructor args...>
 
-# Verify contracts
-npm run verify
+# e.g. sUSD, whose only argument is the owner
+npx hardhat verify --network aevumTestnet 0x45D371fC414ab30bc6B88AB9B31A8c7d87691B68 <deployer address>
 ```
 
-This requires:
-1. Mantle Etherscan API key (get from [Mantle Explorer](https://explorer.testnet.mantle.xyz))
-2. Contracts to be fully confirmed on-chain
+Status: verification of the 16 Nov deployment currently fails on the explorer side ("Unable to verify"). Source is not yet verified on the explorer.
 
-### Manual Deployment (Advanced)
-
-For more control, deploy contracts individually:
+### Checking a Deployment
 
 ```bash
-# Using Hardhat console
-npx hardhat console --network mantleSepolia
-
-# Or create custom deployment script
-# See scripts/deploy-all.ts for reference
+npx hardhat run scripts/check-aevum.cjs --network aevumTestnet
 ```
+
+Confirms every contract in `deployments/44005.json` has code on-chain, and that the router's token, the fee and the key roles are wired correctly.
 
 ---
 
