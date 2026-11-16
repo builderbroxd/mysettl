@@ -45,6 +45,9 @@ function Nav() {
                 {label}
               </a>
             ))}
+            <Link className="st-navlink" to="/docs">
+              Docs
+            </Link>
           </nav>
           <BtnArrow variant="sm" to="/app">
             Open app
@@ -113,6 +116,7 @@ function Closing() {
         <footer className="st-footer">
           <span>Built for Aevum Builder Challenge #1. Testnet only, no real funds.</span>
           <nav>
+            <Link to="/docs">Docs</Link>
             <a href={REPO_URL} target="_blank" rel="noreferrer">GitHub</a>
             <a href={EXPLORER_URL} target="_blank" rel="noreferrer">Explorer</a>
             <a href={FAUCET_URL} target="_blank" rel="noreferrer">Faucet</a>

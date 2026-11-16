@@ -21,6 +21,7 @@ import Proofs from "./pages/app/Proofs";
 import Activity from "./pages/app/Activity";
 import Settings from "./pages/app/Settings";
 import PayInvoice from "./pages/PayInvoice";
+import Docs from "./pages/Docs";
 import { PrivyErrorHandler } from "./components/PrivyErrorHandler";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const AppContent = () => (
         <Routes>
                   <Route path="/" element={<Landing />} />
                   <Route path="/pay/:invoiceId" element={<PayInvoice />} />
+                  <Route path="/docs" element={<Docs />} />
                   <Route path="/app" element={<AppLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="invoices" element={<Invoices />} />

@@ -47,3 +47,6 @@ contracts.json
 
 # Hardhat EDR fork cache
 edr-cache/
+
+# Demo video working files (the final cut lives in media/)
+brag-output/

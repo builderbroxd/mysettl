@@ -3,6 +3,10 @@ SETTL. is a Stripe-like invoice link that turns accounts receivable into on-chai
 
 Built for the [Aevum Builder Challenge #1](https://dorahacks.io/hackathon/2442), Invoice Payments track.
 
+- **Live app:** https://mysettl-nu.vercel.app
+- **Docs:** [mysettl-nu.vercel.app/docs](https://mysettl-nu.vercel.app/docs): the problem, system architecture, core workflows, technologies and a step-by-step guide to trying SETTL. (source: [`src/pages/Docs.tsx`](./src/pages/Docs.tsx))
+- **Demo video (2:59):** [`media/settl-demo.mp4`](./media/settl-demo.mp4)
+
 For a detailed introduction, see [INTRO.md](./INTRO.md).
 
 ## 🚀 Live on Aevum testnet
