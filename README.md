@@ -186,7 +186,7 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-    Start([LP Starts]) --> Deposit[Deposit USDC<br/>to Vault]
+    Start([LP Starts]) --> Deposit[Deposit sUSD<br/>to Vault]
     Deposit --> Receive[Receive USMT+<br/>1:1 Receipt Token]
     
     Receive --> Choice{Stake?}
@@ -194,15 +194,15 @@ flowchart LR
     Choice -->|No| Hold[Hold USMT+<br/>Liquid Position]
     
     Stake --> ReceiveStake[Receive sUSMT+<br/>Staked Token]
-    ReceiveStake --> Earn[Earn 15-25% APY<br/>From Borrower Repayments]
+    ReceiveStake --> Earn[Hold staked position<br/>sUSMT+ 1:1]
     
-    Hold --> EarnSimple[Earn from<br/>Vault Utilization]
+    Hold --> EarnSimple[Pool earns interest<br/>on advances]
     
     Earn --> WithdrawStake[Unstake sUSMT+]
-    EarnSimple --> Withdraw[Withdraw USDC]
+    EarnSimple --> Withdraw[Withdraw sUSD]
     WithdrawStake --> Withdraw
     
-    Withdraw --> Burn[Burn USMT+<br/>Receive USDC]
+    Withdraw --> Burn[Burn USMT+<br/>Receive sUSD]
     Burn --> End([Exit])
     
     style Start fill:#6b7280,stroke:#4b5563,stroke-width:2px,color:#fff
@@ -231,7 +231,7 @@ flowchart TD
     
     Settlement --> Check{Invoice<br/>Financed?}
     Check -->|Yes| CalcRepay[Calculate Repayment<br/>Principal + Interest]
-    Check -->|No| NoRepay[No Repayment<br/>0 USDC]
+    Check -->|No| NoRepay[No Repayment<br/>0 sUSD]
     
     CalcRepay --> Repay[Repayment<br/>→ Vault]
     NoRepay --> CalcRemainder
@@ -442,14 +442,13 @@ InvoiceNFT
     └── Represents tokenized invoices
 
 Vault
-    ├── Accepts LP deposits (USDC)
+    ├── Accepts LP deposits (sUSD)
     ├── Mints USMT+ (1:1 receipt token)
     └── Provides liquidity for advances
 
 Staking
     ├── Accepts USMT+ deposits
-    ├── Mints sUSMT+ (staked receipt token)
-    └── Targets 15-25% APY yield
+    └── Mints sUSMT+ (staked receipt token, 1:1)
 
 AdvanceEngine
     ├── Uses InvoiceNFT as collateral
