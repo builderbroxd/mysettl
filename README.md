@@ -12,7 +12,9 @@
 
 <img width="895" height="714" alt="Screenshot 2025-12-31 at 2 33 13 AM" src="https://github.com/user-attachments/assets/22284d59-2089-457d-a977-1592ed04547f" />
 
-SETTL is a Stripe-like invoice link that turns accounts receivable into RealFi rails on Mantle: businesses get paid in stablecoins, unlock instant financing against invoices/cashflows, and build an on-chain reputation that improves terms over time.
+SETTL. is a Stripe-like invoice link that turns accounts receivable into on-chain cash flow on the **QDay Aevum testnet**. A seller sends an invoice link, takes an instant advance against it from a shared liquidity pool, and gets the rest when the buyer pays. One payment settles the protocol fee, the pool and the seller in a single transaction, and every cleared invoice raises the seller's on-chain reputation, which unlocks larger advances.
+
+Built for the [Aevum Builder Challenge #1](https://dorahacks.io/hackathon/2442), Invoice Payments track.
 
 For a detailed introduction, see [INTRO.md](./INTRO.md).
 
