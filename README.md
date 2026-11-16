@@ -404,28 +404,51 @@ npm run build
 
 # Preview production build locally
 npm run preview
+```
 
-### Testing the Complete Flow
+---
 
-1. **Deploy Contracts:**
-   ```bash
-   npm run deploy
-   ```
+## 🧪 Testing
 
-2. **Start Frontend:**
-   ```bash
-   npm run dev
-   ```
+### Contract tests
 
-3. **Fund Wallets:**
-   - Use Settings → Demo Setup to mint DemoUSDC
-   - Fund test wallets with DemoUSDC
+```bash
+npm test
+```
 
-4. **Test Invoice Flow:**
-   - Create invoice as Seller
-   - Request advance (optional)
-   - Pay invoice as Buyer
-   - Verify settlement waterfall
+`test/settlement.test.cjs` runs on a local Hardhat chain and covers:
+
+- USMT+ minted 1:1 on deposit, and an InvoiceNFT minted on invoice creation
+- Unfinanced settlement: fee to treasury, the rest to the seller
+- Financed settlement in one payment: fee, pool repayment with interest, seller remainder
+- Seller reputation rising when an invoice clears
+- Only the named buyer can pay, and only once
+- Only the seller can take an advance, and never more than the pool holds
+- Protocol fee capped at 5%, settable only by the admin
+- Liquidity provider withdrawals
+
+### Live end-to-end run on Aevum
+
+```bash
+npx hardhat run scripts/e2e-aevum.cjs --network aevumTestnet
+```
+
+Runs one invoice through the live deployment and prints every transaction: mint sUSD, deposit into the pool, create a 10,000 sUSD invoice, take a 35% advance, buyer pays, invoice cleared. Run on 16 Nov 2026 against the addresses above, all checks passed:
+
+| Step | Result |
+|---|---|
+| [Create 10,000 sUSD invoice](https://explorer-test.qday.info/tx/0x9c5b2b7e4841faa5858f62ababaa518a85a7d2e232dbe8ce6ded50ff32b4f203) | Invoice #1 issued |
+| [Request 35% advance](https://explorer-test.qday.info/tx/0x4a7d34b550118402f3e3b5c26b54e6968f066e79fb85f3a31621305c613e047e) | 3,500 sUSD to the seller |
+| [Buyer pays](https://explorer-test.qday.info/tx/0x1466562c02e668d225ce06e186646ec52ac43ca60a648f30d66809b8655d52c4) | Pool repaid 3,551.78 sUSD (principal + interest), seller and fee 6,448.22 sUSD, router left holding nothing |
+| | Invoice cleared, seller reputation score 470 |
+
+### Manual flow in the app
+
+1. Start the frontend with `npm run dev` and connect a wallet on Aevum.
+2. Mint sUSD under **Settings**.
+3. Create an invoice as the seller and optionally request an advance.
+4. Open the invoice's pay link as the buyer and pay it.
+5. Check the settlement waterfall on the invoice page and the seller's new reputation score.
 
 ---
 
