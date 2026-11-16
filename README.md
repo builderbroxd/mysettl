@@ -260,7 +260,7 @@ flowchart TD
 
 ---
 
-##Quick Start
+## ⚡ Quick Start
 
 ### Installation
 
@@ -482,6 +482,16 @@ Reputation
     └── Tracks on-chain credit scores
 ```
 
+### Reputation Tiers
+
+| Tier | Score | Max advance (LTV) |
+|---|---|---|
+| C | 0-450 (new sellers start at 450) | 35% |
+| B | 500-850 | 65% |
+| A | 850-1000 | 90% |
+
+Scores rise with every cleared invoice, with a bonus for volume, capped at 1000. The app enforces the tier limits; AdvanceEngine accepts any LTV up to 100% and an APR up to 50%.
+
 ### Frontend Architecture
 
 ```
@@ -498,7 +508,8 @@ React + TypeScript
 - **Non-Custodial:** SETTL does not hold user funds; all transactions are on-chain
 - **Smart Contracts:** All contracts use OpenZeppelin libraries and best practices
 - **Audits:** Contracts should be audited before mainnet deployment
-- **Testnet Only:** Current deployment is on Mantle Sepolia testnet
+- **Testnet Only:** Current deployment is on QDay Aevum testnet. sUSD refuses to mint outside test chains.
+- **Settlement:** Payment, pool repayment, fee and seller payout happen in one atomic transaction; the router keeps no balance between settlements.
 
 ### For Developers
 
@@ -523,7 +534,7 @@ SETTL is currently in active development. For contributions:
 
 ## 📄 License
 
-© 2024 SETTL.. All rights reserved.
+© 2026 SETTL. All rights reserved.
 
 ---
 
